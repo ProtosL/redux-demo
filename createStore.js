@@ -1,4 +1,10 @@
-export default function createStore(reducer) {
+export default function createStore(reducer, enhancer) {
+
+    // 当传入 enhancer
+    if(enhancer) {
+        return enhancer(createStore)(reducer);
+    }
+    
     let state = null;
     let listeners = [];
 
